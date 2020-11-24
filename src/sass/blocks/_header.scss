@@ -1,0 +1,27 @@
+.header {
+  padding: 19px 0 16px 0;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__country {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__flag {
+    margin-right: 11px;
+  }
+  &__info {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 17px;
+    text-align: left;
+    color: #242424;
+    span {
+      line-height: 14px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}

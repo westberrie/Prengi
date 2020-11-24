@@ -6,6 +6,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const uglify = require('gulp-uglifyjs');
+const concat = require('gulp-concat');
 
 gulp.task('server', () => {
   browserSync({
@@ -35,9 +37,31 @@ gulp.task('html', function () {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('scripts', function () {
-  return gulp.src('src/js/**/*.js').pipe(gulp.dest('dist/js'));
-});
+// gulp.task('scripts', function () {
+//   return gulp.src('src/js/**/*.js').pipe(gulp.dest('dist/js'));
+// });
+
+// gulp.task('scripts', function () {
+//   return gulp
+//     .src([
+//       'src/js/slick.min.js',
+//       'src/js/script.js', //тут нужно подключать библиотеки
+//     ])
+//     .pipe(concat('scripts.min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist/js'))
+//     .pipe(browserSync.reload({ stream: true }));
+// });
+
+//final
+// gulp.task('scripts', function () {
+//   return gulp
+//     .src(['src/js/script.js'])
+//     .pipe(rename({ suffix: '.min', prefix: '' }))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist/js'))
+//     .pipe(browserSync.reload({ stream: true }));
+// });
 
 gulp.task('fonts', function () {
   return gulp.src('src/icons/**/*').pipe(gulp.dest('dist/icons'));
@@ -47,10 +71,6 @@ gulp.task('icons', function () {
   return gulp.src('src/fonts/**/*').pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('mailer', function () {
-  return gulp.src('src/mailer/**/*').pipe(gulp.dest('dist/mailer'));
-});
-
 gulp.task('images', function () {
   return gulp.src('src/img/**/*').pipe(imagemin()).pipe(gulp.dest('dist/img'));
 });
@@ -58,6 +78,7 @@ gulp.task('images', function () {
 gulp.task('watch', () => {
   gulp.watch('src/sass/**/*.+(scss|sass|css)', gulp.parallel('styles'));
   gulp.watch('src/*.html').on('change', gulp.parallel('html'));
+  //gulp.watch('src/js/**/*.js', gulp.parallel('scripts'));
 });
 
 gulp.task(
@@ -66,10 +87,9 @@ gulp.task(
     'watch',
     'server',
     'styles',
-    'scripts',
+    //'scripts',
     'fonts',
     'icons',
-    'mailer',
     'html',
     'images'
   )

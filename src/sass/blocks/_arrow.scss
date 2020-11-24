@@ -1,0 +1,26 @@
+.arrow {
+  margin-left: 28px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &__top,
+  &__bot {
+    display: flex;
+  }
+  &__left {
+    width: 99px;
+    height: 3px;
+    background-color: #ececec;
+    transform-origin: left top;
+    transform: rotate(30deg);
+  }
+  &__right {
+    width: 99px;
+    height: 4px;
+    background-color: #ececec;
+    transform-origin: right top;
+    transform: translateX(-28px) rotate(-30deg);
+  }
+}
