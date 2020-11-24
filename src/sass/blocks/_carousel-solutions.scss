@@ -1,0 +1,104 @@
+.carousel-solutions {
+  width: 947px;
+  margin: 126px auto 0 auto;
+  .slick-slide {
+    outline: none;
+  }
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: calc(50% - 30px);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  .slick-prev {
+    left: -48px;
+  }
+  .slick-next {
+    right: -30px;
+  }
+  .slick-dots {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 843px;
+    height: 65px;
+    border: solid 1px #fff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    .slick-active {
+      &:nth-child(1n) {
+        &::before {
+          color: #00c2f0;
+        }
+      }
+    }
+    li {
+      position: relative;
+      cursor: pointer;
+      &::before {
+        transition: 0.5s all;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 47px;
+        color: #ffffff;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -30px;
+        transform: translateY(-50%);
+        display: inline-block;
+        width: 1px;
+        height: 49px;
+        background-color: #fff;
+        opacity: 0.3;
+      }
+      button {
+        display: none;
+      }
+      &:nth-child(1) {
+        &::before {
+          content: 'Prengi Production';
+        }
+      }
+      &:nth-child(2) {
+        &::before {
+          content: 'Prengi FMC';
+        }
+      }
+      &:nth-child(3) {
+        &::before {
+          content: 'Prengi Mallz Retail';
+        }
+      }
+      &:nth-child(4) {
+        &::before {
+          content: 'Prengi Logistic';
+        }
+      }
+      &:nth-child(5) {
+        &::before {
+          content: 'Prengi IT';
+        }
+      }
+      &:nth-child(6) {
+        &::before {
+          content: 'Prengi HR';
+        }
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
