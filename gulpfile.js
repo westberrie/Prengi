@@ -6,7 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
-const uglify = require('gulp-uglifyjs');
+const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 
 gulp.task('server', () => {
@@ -37,9 +37,9 @@ gulp.task('html', function () {
     .pipe(gulp.dest('dist/'));
 });
 
-// gulp.task('scripts', function () {
-//   return gulp.src('src/js/**/*.js').pipe(gulp.dest('dist/js'));
-// });
+gulp.task('libs', function () {
+  return gulp.src('src/js/libs/*.js').pipe(gulp.dest('dist/js/libs'));
+});
 
 // gulp.task('scripts', function () {
 //   return gulp
@@ -54,14 +54,14 @@ gulp.task('html', function () {
 // });
 
 //final
-// gulp.task('scripts', function () {
-//   return gulp
-//     .src(['src/js/script.js'])
-//     .pipe(rename({ suffix: '.min', prefix: '' }))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('dist/js'))
-//     .pipe(browserSync.reload({ stream: true }));
-// });
+gulp.task('scripts', function () {
+  return gulp
+    .src('src/js/script.js')
+    .pipe(rename('script.min.js'))
+    .pipe(terser())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(browserSync.reload({ stream: true }));
+});
 
 gulp.task('fonts', function () {
   return gulp.src('src/icons/**/*').pipe(gulp.dest('dist/icons'));
@@ -78,7 +78,7 @@ gulp.task('images', function () {
 gulp.task('watch', () => {
   gulp.watch('src/sass/**/*.+(scss|sass|css)', gulp.parallel('styles'));
   gulp.watch('src/*.html').on('change', gulp.parallel('html'));
-  //gulp.watch('src/js/**/*.js', gulp.parallel('scripts'));
+  gulp.watch('src/js/**/*.js', gulp.parallel('scripts'));
 });
 
 gulp.task(
@@ -87,7 +87,8 @@ gulp.task(
     'watch',
     'server',
     'styles',
-    //'scripts',
+    'scripts',
+    'libs',
     'fonts',
     'icons',
     'html',
