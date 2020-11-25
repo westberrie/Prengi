@@ -1,0 +1,43 @@
+.footer {
+  padding: 49px 0 40px 0;
+  background-color: #0082a1;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    img {
+      display: block;
+      margin: 20px 0 20px 0;
+      width: 137px;
+      height: 61px;
+    }
+    a {
+      @include style-footer;
+      line-height: 23px;
+      text-decoration: none;
+    }
+  }
+  &__subtitle {
+    @include style-footer;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  &__text {
+    @include style-footer;
+    width: 378px;
+  }
+  &__label {
+    margin-top: 36px;
+    @include style-footer;
+    text-align: center;
+    font-size: 13px;
+    line-height: 13px;
+  }
+  hr {
+    margin-top: 44px;
+    opacity: 0.3;
+  }
+}

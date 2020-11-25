@@ -1,6 +1,8 @@
 @import 'libs/normalize';
 @import 'libs/slick';
 
+@import 'base/mixins';
+
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -20,3 +22,6 @@
 @import 'blocks/title';
 @import 'blocks/carousel-solutions';
 @import 'blocks/advantages';
+@import 'blocks/variants';
+@import 'blocks/easy';
+@import 'blocks/footer';
