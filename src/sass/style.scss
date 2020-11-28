@@ -3,6 +3,9 @@
 
 @import 'base/mixins';
 
+body {
+  min-width: 1180px;
+}
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -10,6 +13,7 @@
 .container {
   width: 1140px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 @import 'blocks/header';
